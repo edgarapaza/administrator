@@ -139,7 +139,15 @@ if (isset($_SESSION['administrator']))
                         <a href="#"><i class="fa fa-fw fa-table"></i> Tablas</a>
                     </li>
                     <li>
-                        <a href="report/index.php"><i class="fa fa-fw fa-edit"></i> Reportes</a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#reporte"><i class="fa fa-fw fa-arrows-v"></i> Reportes <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="reporte" class="collapse">
+                            <li>
+                                <a href="#">Reporte Grupal</a>
+                            </li>
+                            <li>
+                                <a href="#">Reporte Mensual</a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li>

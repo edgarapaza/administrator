@@ -19,7 +19,7 @@ if(!$result = $mysqli->query($sql)) die(); //si la conexión cancelar programa
     }
 
  $myArray = $rawdata;
- //echo json_encode($myArray);
+ echo json_encode($myArray);
 
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
