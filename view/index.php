@@ -154,10 +154,10 @@ if (isset($_SESSION['administrator']))
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo2"><i class="fa fa-fw fa-arrows-v"></i> Correcciones <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo2" class="collapse">
                             <li>
-                                <a href="admin/correcciones/corregir.php">Por Codigos</a>
+                                <a href="../correcciones">Por Codigos</a>
                             </li>
                             <li>
-                                <a href="admin/correcciones/corregir_x_Protocolo.php">Por Protocolo y Escritura</a>
+                                <a href="../correcciones">Por Protocolo y Escritura</a>
                             </li>
                         </ul>
                     </li>

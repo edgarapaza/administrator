@@ -1,12 +1,3 @@
-<?php
-session_start();
-// Comprovamos si existe la variable
-require_once '../../Model/cone.php';
-$link = new ConexionClass();
-$link->Conectado();
-
-?>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
 <head>
@@ -26,7 +17,7 @@ $link->Conectado();
 		var clave2 = document.getElementById("clave2").value;
 		var tipo = document.getElementById("tipo").value;
 		var habilitado = document.getElementById("nom_usu").value;
-		
+
 		if(nombre == ""){
 			alert("Ingrese NOMBRE DE USUARIO");
 			document.getElementById("nom_usu").focus();
@@ -58,7 +49,7 @@ $link->Conectado();
                         return false;
 		}
             if (clave1 == clave2){
-		
+
 		}else{
                    alert("Las Contraseñas no coinciden");
                    document.getElementById("clave1").value = "";
@@ -122,7 +113,7 @@ body {
       <td><select name="tipo" id="tipo">
       		<option value="1">Administrador</option>
             <option value="2" selected="selected">Trabajador</option>
-            <option value="3">Usuario</option>      
+            <option value="3">Usuario</option>
       </select>      </td>
     </tr>
     <tr>

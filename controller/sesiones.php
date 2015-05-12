@@ -5,9 +5,6 @@ require_once '../coreapp/conection.php';
 $user = $_REQUEST['usuario'];
 $pas  = $_REQUEST['password'];
 
-echo $user."<br>";
-echo $pas;
-
 $sql = "SELECT cod_usu, niv_usu FROM usuarios WHERE log_usu='$user' AND psw_usu ='$pas' LIMIT 0,1;";
 
 $result = $mysqli->query($sql);

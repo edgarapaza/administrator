@@ -1,6 +1,5 @@
 <?php
-session_start();
-if(isset($_SESSION['user'])){
+
 require_once '../../Model/conexion.class.php';
 $link = new conexionclass();
 $link->conectarse();
@@ -81,10 +80,3 @@ if($fec_fin == ""){
    </table>
    </body>
 </html>
-<?
-}
-else
-{
-    print "<meta http-equiv=Refresh content=\"0 ; url= ../../index.php\">";
-}
-?>

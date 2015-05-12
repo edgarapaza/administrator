@@ -1,32 +1,40 @@
 <?php
-require_once "../../../coreapp/conection.php";
+  require_once "../../../coreapp/conection.php";
 
-@$cod_sct = $_GET['cod_sct'];
+  @$cod_sct = $_REQUEST['cod_sct'];
 
-$escri = "SELECT num_sct,cod_pro,num_fol, fec_doc, nom_bie, obs_sct, cod_sub FROM dbarp.escrituras1 WHERE cod_sct = $cod_sct";
-$otor = "SELECT `cod_inv`,`cod_inv_ju` FROM `escriotor1` WHERE `cod_sct`=$cod_sct";
-$fav = "SELECT `cod_inv`,`cod_inv_ju` FROM `escrifavor1` WHERE `cod_sct`=$cod_sct";
+  $escritura = "SELECT num_sct,cod_pro,num_fol, fec_doc, nom_bie, obs_sct, cod_sub FROM dbarp.escrituras1 WHERE cod_sct = $cod_sct;";
+  $otor = "SELECT cod_inv,cod_inv_ju FROM escriotor1 WHERE cod_sct=$cod_sct;";
+  $fav = "SELECT cod_inv,cod_inv_ju FROM escrifavor1 WHERE cod_sct=$cod_sct;";
 
-$query1 = mysql_query($otor);
-$query2 = mysql_query($fav);
-$query3 = mysql_query($escri);
+  $query3 = $mysqli->query($escritura);
+  $query1 = $mysqli->query($otor);
+  $query2 = $mysqli->query($fav);
 
-@$result1 = mysql_fetch_array($query1);
-@$result2 = mysql_fetch_array($query2);
-@$r_escri = mysql_fetch_array($query3);
+  @$result1 = $query1->fetch_assoc();
+  @$result2 = $query2->fetch_array();
+  @$r_escri = $query3->fetch_array();
+
+  echo "aquiiiiii".$query1->num_rows;
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Correcion de Datos - Archivo Regional de Puno</title>
-<link rel="stylesheet" type="text/css" href="../../../css/tablas.css">
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Correcion de Datos - Archivo Regional de Puno</title>
 </head>
 
 <body>
+  <nav>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="../../../view/index.php">Regresar</a></li>
+    </ul>
+  </nav>
 <form action="" method="get" name="envio1">
   <p>Ingrese el Codigo de la Base de Datos relacionada a la Escritura:
-    <input type="text" name="cod_sct" id="cod_sct" value="<?php echo $cod_sct;?>" />
+    <input type="text" name="cod_sct" value="<?php echo $cod_sct; ?>" placeholder="Codigo de la Escritura">
     <input name="consultar" type="submit" class="boton" id="consultar" value="Consultar" />
   </p>
 </form>
@@ -42,21 +50,22 @@ $query3 = mysql_query($escri);
     </tr>
     <tr>
       <td width="219">Otorgante</td>
-      <td width="72"><?php echo $result1[0];?></td>
+      <td width="72"><?php echo $result1['cod_inv'];?></td>
       <td width="496"><?php
-	  					$o1 = "SELECT CONCAT(nom_inv, ' ', pat_inv, ' ', mat_inv) AS nombre, otros FROM involucrados1 WHERE Cod_inv ='$result1[0]'";
-						$r_o1 = mysql_query($o1);
-						$r_r1 = mysql_fetch_array($r_o1);
-						printf("%s",$r_r1[0]);
+
+	  				$otorgante_respuesta = "SELECT CONCAT(nom_inv, ' ', pat_inv, ' ', mat_inv) AS nombre, otros FROM involucrados1 WHERE Cod_inv =".$result1["cod_inv"];
+						$respuestaOtorgante = $mysqli->query($otorgante_respuesta);
+						$nombreOtorgante = $respuestaOtorgante->fetch_assoc();
+						printf("%s",$nombreOtorgante['nombre']);
 	  				?></td>
-      <td width="144"><input type="text" name="otorgante" id="otorgante" value="<?php echo $result1[0];?>" /></td>
+      <td width="144"><input type="text" name="otorgante" id="otorgante" value="<?php echo $result1[""];?>" /></td>
 	  <td><input name="boton1" type="button" class="boton" onclick="javascript:window.open('./modificar_nombres.php?cod_usu=<?php echo $result1[0];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" /></td>
     </tr>
     <tr>
       <td>Favorecido</td>
       <td><?php echo $result2[0];?></td>
       <td><?php
-	  					$f1 = "SELECT CONCAT(nom_inv, ' ', pat_inv, ' ', mat_inv) AS nombre, otros FROM involucrados1 WHERE Cod_inv ='$result2[0]'";
+	  				$f1 = "SELECT CONCAT(nom_inv, ' ', pat_inv, ' ', mat_inv) AS nombre, otros FROM involucrados1 WHERE Cod_inv ='$result2[0]';";
 						$r_f1 = mysql_query($f1);
 						$r_rf1 = mysql_fetch_array($r_f1);
 						printf("%s",$r_rf1[0]);
@@ -67,8 +76,9 @@ $query3 = mysql_query($escri);
     <tr>
       <td>Otorgante Juridico</td>
       <td><?php echo $result1[1];?></td>
-      <td>			<?php
-	  					$oj1 = "SELECT Raz_inv FROM `involjuridicas1` WHERE `Cod_inv` ='$result1[1]'";
+      <td>
+        <?php
+	  				$oj1 = "SELECT Raz_inv FROM involjuridicas1 WHERE Cod_inv ='$result1[1]';";
 						$r_oj1 = mysql_query($oj1);
 						$r_rj1 = mysql_fetch_array($r_oj1);
 						printf("%s",$r_rj1[0]);
@@ -80,7 +90,7 @@ $query3 = mysql_query($escri);
       <td>Favorecido Juridico</td>
       <td><?=$result2[1];?></td>
       <td><?php
-	  					$fj1 = "SELECT Raz_inv FROM `involjuridicas1` WHERE `Cod_inv` ='$result2[1]'";
+	  				$fj1 = "SELECT Raz_inv FROM involjuridicas1 WHERE Cod_inv ='$result2[1]'";
 						$r_fj1 = mysql_query($fj1);
 						$r_rfj1 = mysql_fetch_array($r_fj1);
 						printf("%s",$r_rfj1[0]);
@@ -124,7 +134,7 @@ $query3 = mysql_query($escri);
   </tr>
 </table>
 </form>
-<table width="70%">
+    <table width="70%">
         <form name="subserie" method="get" action="change_subserie.php">
             	<input type="hidden" name="escritura" id="escritura" value="<?php echo $cod_sct; ?>" />
                 <tr>
@@ -149,7 +159,7 @@ $query3 = mysql_query($escri);
                         <input type="submit" name="btnCambiarSubserie" id ="btnCambiarSubserie" value="Cambiar Tipo de Documento" />
                     </td>
                 </tr>
-                </form>
-               </table>
+          </form>
+      </table>
 </body>
 </html>
