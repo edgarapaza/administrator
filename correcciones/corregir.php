@@ -4,8 +4,8 @@
   @$cod_sct = $_REQUEST['cod_sct'];
 
   $escritura = "SELECT num_sct,cod_pro,num_fol, fec_doc, nom_bie, obs_sct, cod_sub FROM dbarp.escrituras1 WHERE cod_sct = $cod_sct;";
-  $otor = "SELECT cod_inv,cod_inv_ju FROM escriotor1 WHERE cod_sct=$cod_sct;";
-  $fav = "SELECT cod_inv,cod_inv_ju FROM escrifavor1 WHERE cod_sct=$cod_sct;";
+  $otor = "SELECT cod_inv,cod_inv_ju FROM escriotor1 WHERE cod_sct= $cod_sct;";
+  $fav = "SELECT cod_inv,cod_inv_ju FROM escrifavor1 WHERE cod_sct= $cod_sct;";
 
   $query3 = $mysqli->query($escritura);
   $query1 = $mysqli->query($otor);

@@ -3,58 +3,179 @@
 class Listado {
 
     private $lista;
-    private $contador;
+
     public function __construct() {
 
-        $this->contador=0;
+        require_once '../controller/listado.php';
 
+        $valores = Listado();
         $this->lista = array();
-
-        $this->lista[0] = 3325;
-        $this->lista[1] = 3326;
-        $this->lista[2] = 3330;
-        $this->lista[3] = 3331;
-        $this->lista[4] = 3333;
-        $this->lista[5] = 3356;
-        $this->lista[6] = 3388;
+        while($fila = $valores->fetch_array())
+        {
+            //echo $fila[0];
+            $this->lista[] = $fila[0];
+        }
 
     }
 
-    public function ImprimirLista() {
-        for($i=0;$i<=count($this->lista);$i++)
-        {
-            echo $this->lista[$i]."<br>";
-        }
+    public function ImprimirLista($item) {
+        echo $this->lista[$item];
     }
 
     public function TotalLista() {
         echo count($this->lista);
     }
 
-    public function Inicio() {
-        echo "Funcion inicio. ";
-        echo reset($this->lista);
-    }
+    public function Contador()
+        {
+            $archivo = "visitas.txt";
+            $info = array();
 
-    public function Siguiente() {
+            //comprobar si existe el archivo
+            if (file_exists($archivo)){
+                // abrir archivo de texto y introducir los datos en el array $info
+                $fp = fopen($archivo,"r");
+                $contador = fgets($fp, 26);
+                $info = explode(" ",$contador);
+                fclose($fp);
 
-        echo "Funcion Siguiente. ";
-        echo next($this->lista);
-    }
+                // poner nombre a cada dato
+                $mes_actual = date("m");
+                $mes_ultimo = $info[0];
+                $visitas_mes = $info[1];
+                $visitas_totales = $info[2];
+            }else{
+                // inicializar valores
+                $mes_actual = date("m");
+                $mes_ultimo = "0";
+                $visitas_mes = 0;
+                $visitas_totales = 0;
+            }
 
-    public function Incrementar() {
-        echo $this->contador++;
-        $this->contador++;
-    }
+            // incrementar las visitas del mes según si estamos en el mismo
+            // mes o no que el de la ultima visita, o ponerlas a cero
+            if ($mes_actual==$mes_ultimo){
+                $visitas_mes++;
+            }else{
+                $visitas_mes=1;
+            }
+            $visitas_totales++;
+
+            // reconstruir el array con los nuevos valores
+            //$info[0] = $mes_actual;
+            $info[0] = "Edgar";
+            $info[1] = $visitas_mes;
+            $info[2] = $visitas_totales;
+
+            // grabar los valores en el archivo de nuevo
+            $info_nueva = implode(" ",$info);
+            $fp = fopen($archivo,"w+");
+            fwrite($fp, $info_nueva, 26);
+            fclose($fp);
+            // devolver el array
+                //var_dump($info);
+                //echo "valor : ".$info[2];
+            return $info[2];
+        }
+
+    public function ContadorMenos()
+        {
+            $archivo = "visitas.txt";
+            $info = array();
+
+            //comprobar si existe el archivo
+            if (file_exists($archivo)){
+                // abrir archivo de texto y introducir los datos en el array $info
+                $fp = fopen($archivo,"r");
+                $contador = fgets($fp, 26);
+                $info = explode(" ",$contador);
+                fclose($fp);
+
+                // poner nombre a cada dato
+                $mes_actual = date("m");
+                $mes_ultimo = $info[0];
+                $visitas_mes = $info[1];
+                $visitas_totales = $info[2];
+            }else{
+                // inicializar valores
+                $mes_actual = date("m");
+                $mes_ultimo = "0";
+                $visitas_mes = 0;
+                $visitas_totales = 0;
+            }
+
+            // incrementar las visitas del mes según si estamos en el mismo
+            // mes o no que el de la ultima visita, o ponerlas a cero
+            if ($mes_actual==$mes_ultimo){
+                $visitas_mes++;
+            }else{
+                $visitas_mes=1;
+            }
+            $visitas_totales--;
+
+            // reconstruir el array con los nuevos valores
+            //$info[0] = $mes_actual;
+            $info[0] = "Edgar";
+            $info[1] = $visitas_mes;
+            $info[2] = $visitas_totales;
+
+            // grabar los valores en el archivo de nuevo
+            $info_nueva = implode(" ",$info);
+            $fp = fopen($archivo,"w+");
+            fwrite($fp, $info_nueva, 26);
+            fclose($fp);
+            // devolver el array
+                //var_dump($info);
+                //echo "valor : ".$info[2];
+            return $info[2];
+        }
 
 }
 
-$mio = new Listado();
-$mio->TotalLista();
-echo "<br>";
-$mio->ImprimirLista();
-echo $mio->Siguiente();
 
+$mio = new Listado();
+//$mio->Listado(1);
+
+echo " Escrituras en Total a Revisar.".$mio->TotalLista();
+echo "<br>";
+
+
+
+if(isset($_REQUEST["siguiente"]))
+{
+    $mio->ImprimirLista($mio->Contador()-1);
+
+}
+
+if(isset($_REQUEST["anterior"]))
+{
+    $mio->ImprimirLista($mio->ContadorMenos());
+
+}
+
+if(isset($_REQUEST["reiniciar"]))
+{
+    echo "Lista Vacia";
+    $archivo = "visitas.txt";
+    $info = array();
+    $info_nueva = implode(" ",$info);
+    $fp = fopen($archivo,"w+");
+       //Coloca el archivo en Cero
+    fwrite($fp, 0, 26);
+    fclose($fp);
+}
+
+/**
+*
+*/
+class ClassName extends AnotherClass
+{
+
+    function __construct(argument)
+    {
+        # code...
+    }
+}
 ?>
 
 <html>
@@ -63,31 +184,9 @@ echo $mio->Siguiente();
     </head>
     <body>
         <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="get">
-           <input type="submit" name="enviar" value="enviar">
-           <input type="text" name="contador" value="<?php echo $cont; ?>">
+           <input type="submit" name="siguiente" value="Siguiente">
+           <input type="submit" name="anterior" value="Anterior">
+           <input type="submit" name="reiniciar" value="Desde el principio">
         </form>
     </body>
 </html>
-<?php
-function contador()
-{
-    echo "Dentro de la funcion";
- // fichero donde se guardaran las visitas
- $fichero = "visitas.txt";
-    
-/* @var $fptr File */
-    $fptr = fopen($fichero,"r");
- 
- // sumamos una visita  
- $num = fread($fptr,filesize($fichero));
- $num++;
-
- $fptr = fopen($fichero,"w+");
- fwrite($fptr,$num);
-
- echo $num;
- return $num;
-}
-
-contador();
-?>
