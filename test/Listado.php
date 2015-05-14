@@ -164,18 +164,6 @@ if(isset($_REQUEST["reiniciar"]))
     fwrite($fp, 0, 26);
     fclose($fp);
 }
-
-/**
-*
-*/
-class ClassName extends AnotherClass
-{
-
-    function __construct(argument)
-    {
-        # code...
-    }
-}
 ?>
 
 <html>
