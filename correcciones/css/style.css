@@ -1,0 +1,200 @@
+
+
+@media all and (max-width: 500px){
+	div{
+		display: block !important;	/* Cuando el ancho sea inferior a 600px el elemento será un bloque */
+		width: 100% !important;
+		max-width: 100% !important;
+		margin: auto !important;
+		position: relative !important;
+		float: none !important;
+	}
+
+	table{
+		width: 100%;
+	}
+
+	table #l{
+		width: 25%;
+	}
+
+	table #R{
+		width: 70%;
+
+	}
+
+	.left input{
+		width: auto;
+	}
+
+	.cabecera b{
+		font-size: 18px;
+	}
+	.cuerpo td,p{
+		font-size: 12px;
+	}
+
+	.left{
+
+		width: auto;
+		height: auto;
+	}
+
+
+}
+.superior{
+	background: #799;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 30px;
+}
+.cuerpo{	/* Este es el delimitador para que la página no sea excesivamente grande */
+	max-width: 1000px;
+	margin:auto;
+	font-size: 14px;
+}
+.cabecera{
+
+	margin-top: 10px;
+	height: 70px;
+	text-align: center;
+	font-size: 30px;
+	text-transform: uppercase;
+
+}
+
+
+.left{
+
+	float: left;	/* flotamos el elemento a la izquierda */
+	width: 35%;
+	height: auto;
+	border:solid silver 2px;
+	border-radius:10px;
+	padding: 10px;
+
+
+
+}
+.right{
+
+	width: 59%;
+	margin-left: 39%;
+	height: auto;
+	border:solid silver 2px;
+	border-radius:10px;
+	padding:10px;
+
+}
+
+.center{
+
+
+	height: auto;
+	text-align: justify;
+	font-size: 18px;
+	padding: 1px 10px 10px 10px;
+	margin-top: 10px;
+	border:solid silver 2px;
+	border-radius:10px;
+	width: 98%;
+	float:left;
+}
+
+.left2{
+
+	float: left;	/* flotamos el elemento a la izquierda */
+	width: 58%;
+	height: 200px;
+	border:solid silver 2px;
+	border-radius:10px;
+	border-radius:10px;
+	padding: 10px;
+
+	margin-top: 10px;
+
+}
+.right2{
+
+	width: 36%;
+	margin-left: 62%;
+	height: 200px;
+	border:solid silver 2px;
+	border-radius:10px;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+textarea{
+
+	width: 90%;
+	height: 65%;
+	margin-left: 2%;
+
+}
+
+.cabecera .left input{
+	width: 50%;
+}
+
+#id{
+	width: 25%;
+}
+
+.Name{
+	width: 70%;
+}
+
+.center, .left, .right, .left2, .right2{
+/*background: rgba(176, 196, 222, 0.4); /* 50% transparent */
+background-image: url(binding_light.png);
+}
+
+body{
+
+/*background-image: url("4.jpg");*/
+/*background: rgba(173, 216, 230, 0.5); /* 50% transparent */
+background-image: url(small_steps.png);
+
+}
+
+.general{
+	/*background-image: url(subcabecera_r2.gif);
+	background-repeat: no-repeat;
+	background-position: center;
+*/
+/*background-image: url(small_steps.png);*/
+
+}
+
+.part1{
+
+	width: 100%;
+	height: auto;
+
+}
+
+.part2{
+
+	width: 100%;
+	height: auto;
+	margin-top: 10px;
+
+}
+
+.OBS{
+
+	width: 100%;
+	height: auto;
+	float: left;
+}
+
+.boton{
+
+	width: 100%;
+	float: left;
+	margin-top: 20px;
+
+}
