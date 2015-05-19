@@ -1,13 +1,14 @@
 <?php
-function Listado(){
-    require_once '../model/listadoClass.php';
+function Listado($protocolo){
+    require '../model/listadoClass.php';
     
     $test = new ListadoClass();
-    $result = $test->Listado(1);
+    $result = $test->Listado($protocolo);
     
     return $result;
-    
 }
+
+
 
 
 
