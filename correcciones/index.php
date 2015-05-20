@@ -9,9 +9,10 @@
 </head>
 <body>
     <h3>Ingrese el Numero de Protocolo a Revisar</h3>
-    <form action="../controller/escrituras.php" method="get" accept-charset="utf-8">
+    <form action="../controller/protocolos.php" method="get" accept-charset="utf-8">
         <input type="text" name="protocolo" value="" placeholder="Numero de Protocolo">
         <input type="submit" name="revisar" value="Comenzar revision">
+        <input type="submit" name="revisar3" value="otro">
     </form>
 </body>
 </html>

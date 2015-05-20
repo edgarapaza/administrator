@@ -1,8 +1,8 @@
 <?php
 function Listado($protocolo){
-    require '../model/listadoClass.php';
+    require '../model/ListadoProtocoloClass.php';
     
-    $test = new ListadoClass();
+    $test = new ListadoProtocoloClass();
     $result = $test->Listado($protocolo);
     
     return $result;
