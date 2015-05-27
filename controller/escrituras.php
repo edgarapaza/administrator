@@ -130,57 +130,75 @@ echo DatosEscrituras($lista[$cont]);
 
             <div class="right">
 
-            <table >
-               <tr>
-                <td id="l">Otorgantes</td><td id="C">
-                  <?php
-                    //echo "Otorgantes -----------------------------------------------------<br>";
-                    $dataOtorgantes = $recojo->ListadoOtorgantes($numero);
+            <table border="1">
+                <tr>
+                        <td id="l">Otorgantes</td>
+                        <td id="C">
+                            <?php
+                              //echo "Otorgantes -----------------------------------------------------<br>";
+                              $dataOtorgantes = $recojo->ListadoOtorgantes($numero);
 
-                    while($filao = $dataOtorgantes->fetch_assoc())
-                    {
-                        echo $nombre->VerNombre($filao['cod_inv'])."<br>";
-                    }
-                    echo "-------------------------------------------------------------------------";
-                   ?>
-                </td>
-                <td id="R"><button name="boton" type="submit"><img src="img/editar.jpg" widht='10' height='20'></button></td><td id="R"><button name="boton" type="submit"><img src="img/agregar.jpg" widht='10' height='20'></button></td>
-                </tr>
-                <tr>
-                <td id="l">Favorecidos</td><td id="C">
-                  <?php
-                    //echo "Favorecidos -----------------------------------------------------<br>";
-                    $dataFavorecidos = $recojo->ListadoFavorecido($numero);
+                              while($filao = $dataOtorgantes->fetch_assoc())
+                                  {
+                                      echo $nombre->VerNombre($filao['cod_inv']);
+                              ?>
+                                <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $filao['cod_inv'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
 
-                    while($filaf = $dataFavorecidos->fetch_assoc())
-                    {
-                        echo $nombre->VerNombre($filaf['cod_inv'])."<br>";
-                    }
-                    echo "-------------------------------------------------------------------------";
-                  ?>
-                </td><td id="R"><button name="boton" type="submit"><img src="img/editar.jpg" widht='10' height='20'></button></td><td id="R"><button name="boton" type="submit"><img src="img/agregar.jpg" widht='10' height='20'></button></td>
+                         <?php
+                            }
+                            
+                       ?>
+                        </td>
+                        <td id="R">Agregar Otorgante</td>
                 </tr>
                 <tr>
-                <td id="l">Otorgantes Juridicos</td><td id="C">
-                  <?php
-                    //echo "Otorgantes Juridicos-----------------------------------------------------<br>";
-                    while($filao = $dataOtorgantes->fetch_assoc())
-                    {
-                        echo $filao['cod_inv_ju']."<br>";
-                    }
-                  ?>
-                </td><td id="R"><button name="boton" type="submit"><img src="img/editar.jpg" widht='10' height='20'></button></td><td id="R"><button name="boton" type="submit"><img src="img/agregar.jpg" widht='10' height='20'></button></td>
+                    <td id="l">Favorecidos</td>
+                    <td id="C">
+                        <?php
+
+                          $dataFavorecidos = $recojo->ListadoFavorecido($numero);
+
+                          while($filaf = $dataFavorecidos->fetch_assoc())
+                          {
+                              echo $nombre->VerNombre($filaf['cod_inv']);
+                          ?>
+                        <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $filaf['cod_inv'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
+                          <?php
+                          }
+                          
+                        ?>
+                    </td>
+                    
+                    <td id="R">Agregar Favorecido</td>
                 </tr>
+                
                 <tr>
-                <td id="l">Favorecidos Juridicos</td><td id="C">
-                  <?php
-                    //echo "Favorecidos Juridicos-----------------------------------------------------<br>";
-                    while($filaf = $dataFavorecidos->fetch_assoc())
-                    {
-                        echo $filaf['cod_inv_ju']."<br>";
-                    }
-                  ?>
-                </td> <td id="R"><button name="boton" type="submit"><img src="img/editar.jpg" widht='10' height='20'></button></td><td id="R"><button name="boton" type="submit"><img src="img/agregar.jpg" widht='10' height='20'></button></td></tr>
+                        <td id="l">Otorgantes Juridicos</td>
+                        <td id="C">
+                          <?php
+                            //echo "Otorgantes Juridicos-----------------------------------------------------<br>";
+                            while($filao = $dataOtorgantes->fetch_assoc())
+                            {
+                                echo $filao['cod_inv_ju']."<br>";
+                            }
+                          ?>
+                        </td>
+                        <td id="R"></td>
+                </tr>
+                
+                <tr>
+                        <td id="l">Favorecidos Juridicos</td>
+                        <td id="C">
+                          <?php
+                            //echo "Favorecidos Juridicos-----------------------------------------------------<br>";
+                            while($filaf = $dataFavorecidos->fetch_assoc())
+                            {
+                                echo $filaf['cod_inv_ju']."<br>";
+                            }
+                          ?>
+                        </td>
+                        <td id="R"></td>
+                </tr>
             </table>
 
             </div>

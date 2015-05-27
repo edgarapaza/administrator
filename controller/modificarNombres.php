@@ -1,8 +1,8 @@
 <?php
-require '../../coreapp/conection.php';
+require '../coreapp/conection.php';
 
-//$codigo = $_REQUEST['cod_usu'];
-$codigo = 23;
+$codigo = $_REQUEST['cod_usu'];
+
 $sql = "SELECT Cod_inv, Pat_inv, Mat_inv, Nom_inv, otros FROM involucrados1 WHERE Cod_inv = $codigo;";
 $valores = $mysqli->query($sql);
 $datos = $valores->fetch_assoc();

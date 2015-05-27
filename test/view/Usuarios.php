@@ -1,9 +1,3 @@
-<?php
-//require '../controller/Usuario.php';
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

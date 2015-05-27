@@ -5,7 +5,7 @@ class UsuariosClass
 
 	public function ModificarNombre($codigo=0, $nombre='',$paterno='',$materno='')
 	{
-		require '../../coreapp/conection.php';
+		require '../coreapp/conection.php';
 
 		$sql = "UPDATE involucrados1 SET Pat_inv = '$paterno', Mat_inv = '$materno', Nom_inv = '$nombre' WHERE Cod_inv = $codigo LIMIT 1;";
 
@@ -15,7 +15,7 @@ class UsuariosClass
 
 	public function AgregarOtorgante($cod_sct)
 	{
-		require '../../coreapp/conection.php';
+		require '../coreapp/conection.php';
 
 		$sql = "SELECT COUNT(cod_rel) AS total FROM escriotor1 WHERE cod_sct = 987907;";
 		$result = $mysqli->query($sql);
@@ -34,7 +34,4 @@ class UsuariosClass
 		}
 	}
 }
-
-$edgar = new UsuariosClass();
-$edgar->AgregarOtorgante(123);
 ?>
