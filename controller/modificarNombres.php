@@ -18,9 +18,9 @@ $datos = $valores->fetch_assoc();
 
 <p>Modificar Nombres del Sistema</p>
 <form id="form1" name="form1" method="post" action="Usuarios.php">
-  <table width="481" border="1">
+  <table width="481" border="0">
     <tr>
-      <td width="125">Codigo del Usuario: </td>
+      <td width="125">Codigo BD: </td>
       <td width="453"><?php echo $datos['Cod_inv'];?><input type="hidden" name="codigo" value="<?php echo $datos['Cod_inv'];?>" /></td>
     </tr>
     <tr>

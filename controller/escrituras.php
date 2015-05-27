@@ -102,7 +102,7 @@ echo DatosEscrituras($lista[$cont]);
       <div class="cabecera">
          <b>Sistema de Revision de Protocolos</b>
       </div>
-        <form action="CambiarDatos.php" method="get">
+        <form action="CambiarDatos.php" method="post">
             
             <input type="hidden" name="codigoEscritura" value="<?php echo $fila['cod_sct'];?>" />
         <div class="part1">
@@ -149,7 +149,7 @@ echo DatosEscrituras($lista[$cont]);
                             
                        ?>
                         </td>
-                        <td id="R">Agregar Otorgante</td>
+                        <td id="R"><a href="AddOtorgante.php">Agregar Otorgante</a></td>
                 </tr>
                 <tr>
                     <td id="l">Favorecidos</td>
@@ -206,60 +206,68 @@ echo DatosEscrituras($lista[$cont]);
         <br>
 
         <div class="part2">
-            <div class="center">
+                <div class="center">
 
-              <table>
-                <tr><td>Nombre de Bien: *</td><td><input type="text" name="nombreBien" value="<?php echo $fila['nom_bie'];?>" size="100" /></td>
-                </tr>
-                <tr><td>Sub Serie: *</td><td><?php echo $subserie->VerSubserie($fila['cod_sub']);?> <input type="button" name="btnCambiarSubSerie" value="Cambiar Subserie" /></td>
-                </tr>
+                <table>
+                        <tr>
+                                <td>Nombre de Bien: *</td>
+                                <td><input type="text" name="nombreBien" value="<?php echo $fila['nom_bie'];?>" size="100" /></td>
+                        </tr>
+                        <tr>
+                                <td>Sub Serie: *</td>
+                                <td><?php echo $subserie->VerSubserie($fila['cod_sub']);?> <input type="button" name="btnCambiarSubSerie" value="Cambiar Subserie" /></td>
+                        </tr>
+                        <tr>
+                            <td>Notario</td>
+                            <td><?php echo $notario->VerNotario($fila['cod_not']);?></td>
+                        </tr>
+                        <tr>
+                                <td>Distrito:</td>
+                                <td><?php echo $distritos->VerDistrito($fila['cod_dst']);?></td>
+                        </tr>
+                        <tr>
+                                <td>Total Folios: *</td>
+                                <td><input type="text" name="cantidadFolios" value="<?php echo $fila['can_fol'];?>" /></td>
+                        </tr>
+                        <tr>
+                                <td>Codigo Trabajador:</td>
+                                <td><?php echo $trabajador->VerTrabajador($fila['cod_usu']);?></td>
+                        </tr>
+                        <tr>
+                                <td>Hora Ingreso:</td>
+                                <td><?php echo $fila['hra_ing'];?></td>
+                        </tr>
+                        <tr>
+                                <td>Numero de Proyecto:</td>
+                                <td><?php echo $fila['proy_id'];?></td>
+                        </tr>
+                      
+                </table>
 
-                      <tr><td>Notario</td><td><?php echo $notario->VerNotario($fila['cod_not']);?></td>
-                      </tr>
-                      <tr><td>Distrito:</td><td><?php echo $distritos->VerDistrito($fila['cod_dst']);?></td>
-                      </tr>
-                      <tr><td>Total Folios: *</td><td><input type="text" name="cantidadFolios" value="<?php echo $fila['can_fol'];?>" /></td>
-                      </tr>
-                      <tr><td>Codigo Trabajador:</td><td><?php echo $trabajador->VerTrabajador($fila['cod_usu']);?></td>
-                      </tr>
-                      <tr><td>Hora Ingreso:</td><td><?php echo $fila['hra_ing'];?></td>
-                      </tr>
-                      <tr><td>Numero de Proyecto:</td><td><?php echo $fila['proy_id'];?></td>
-                      </tr>
-
-              </table>
-
-            </div>
-            <br>
-
-            <div class="OBS">
-
-            <div class="left2">
-
-              <p>Observaciones</p>
-
-              <TEXTAREA  name="observaciones">
-                              <?php echo $fila['obs_sct'];?>
-              </TEXTAREA>
-
-               <input type="submit" name="btnGuardarCambios" value="Guardar Cambios" />
-
-            </div>
-            </div>
- 
+                </div>
+                <br>
+                <div class="OBS">
+                        <div class="left2">
+                                <p>Observaciones</p>
+                                <TEXTAREA  name="observaciones">
+                                      <?php echo $fila['obs_sct'];?>
+                                </TEXTAREA>
+                                <input type="submit" name="btnGuardarCambios" value="Guardar Cambios" />
+                        </div>
+                </div>
         </div>
         </form>
 
         <!-- FORMLARIO PARA GUARDAR LAS CORRECCIONES HECHAS EN EL FORMULARIO -->
-        <form action="" method="get">
-            <div class="right2">
-              <p>Correcciones</p>
-                 <textarea name="correcciones"></textarea>
-                 <input type="submit" name="btnCorrecciones" value="Guardar Correcciones" />
-            </div>
+        <form action="" method="post">
+                <div class="right2">
+                        <p>Correcciones</p>
+                        <textarea name="correcciones"></textarea>
+                        <input type="submit" name="btnCorrecciones" value="Guardar Correcciones" />
+                </div>
         </form>
 
-    </div>
+        </div>
 </div>
 
         <footer>
@@ -283,7 +291,7 @@ echo DatosEscrituras($lista[$cont]);
 </body>
 </html>
 <?php  } ?>
-  <form action="" method="get">
+  <form action="" method="post">
         <input name="mas" type="submit" value="Siguiente >>">
         <input name="menos" type="submit" value="<< Retroceder">
         <input type="hidden" name="contador" value="<?php echo $cont; ?>">
