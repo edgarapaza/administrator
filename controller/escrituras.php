@@ -64,6 +64,7 @@ echo DatosEscrituras($lista[$cont]);
           require '../model/SubserieClass.php';
           require '../model/NombresClass.php';
           require '../model/TrabajadorClass.php';
+          require '../model/NombreJuridicosClass.php';
 
           $notario = new NotariosClass();
           $distritos = new DistritoClass();
@@ -71,7 +72,8 @@ echo DatosEscrituras($lista[$cont]);
           $nombre = new NombresClass();
           $trabajador = new TrabajadorClass();
           $recojo = new EscrituraClass();
-
+          $nombreJuridico = new NombreJuridicosClass();
+          
           $dataEscrituras = $recojo->Escrituras($numero);
           $fila = $dataEscrituras->fetch_assoc();
 
@@ -140,16 +142,20 @@ echo DatosEscrituras($lista[$cont]);
 
                               while($filao = $dataOtorgantes->fetch_assoc())
                                   {
+                                  if($filao['cod_inv'] != 0)
+                                  {
                                       echo $nombre->VerNombre($filao['cod_inv']);
                               ?>
                                 <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $filao['cod_inv'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
-
+                                
                          <?php
+                                echo "<br>";
+                                  }
                             }
                             
                        ?>
                         </td>
-                        <td id="R"><a href="AddOtorgante.php">Agregar Otorgante</a></td>
+                        <td id="R"><input name="boton1" size="10" type="button" onclick="javascript:window.open('AddOtorgante.php?cod_sct=<?php echo $fila['cod_sct'];?>&cod_per=<?php echo $fila['cod_usu'];?>','','width=800, height=500, scrollbars=NO');" value="Agregar Otorgante" /></td>
                 </tr>
                 <tr>
                     <td id="l">Favorecidos</td>
@@ -160,16 +166,22 @@ echo DatosEscrituras($lista[$cont]);
 
                           while($filaf = $dataFavorecidos->fetch_assoc())
                           {
-                              echo $nombre->VerNombre($filaf['cod_inv']);
+                              if($filaf['cod_inv'] != 0)
+                              {
+                                  echo $nombre->VerNombre($filaf['cod_inv']);
+                              
+                              
                           ?>
-                        <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $filaf['cod_inv'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
+                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $fila['cod_usu'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
                           <?php
+                            echo "<br>";
+                              }
                           }
                           
                         ?>
                     </td>
                     
-                    <td id="R">Agregar Favorecido</td>
+                    <td id="R"><input name="boton1" size="10" type="button" onclick="javascript:window.open('AddFavorecido.php?cod_sct=<?php echo $fila['cod_sct'];?>&cod_per=<?php echo $fila['cod_usu'];?>','','width=800, height=500, scrollbars=NO');" value="Agregar Favorecido" /></td>
                 </tr>
                 
                 <tr>
@@ -177,27 +189,45 @@ echo DatosEscrituras($lista[$cont]);
                         <td id="C">
                           <?php
                             //echo "Otorgantes Juridicos-----------------------------------------------------<br>";
-                            while($filao = $dataOtorgantes->fetch_assoc())
+                          $dataOtorgantes = $recojo->ListadoOtorgantes($numero);
+                          
+                            while($filaoj = $dataOtorgantes->fetch_assoc())
                             {
-                                echo $filao['cod_inv_ju']."<br>";
+                                if($filaoj['cod_inv_ju'] != 0)
+                                {
+                                echo $nombreJuridico->VerNombreJuridico($filaoj['cod_inv_ju']);
+                            ?>
+                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $fila['cod_usu'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
+                          <?php
+                                echo "<br>";
+                                }
                             }
                           ?>
                         </td>
-                        <td id="R"></td>
+                        <td id="R"><input name="boton1" size="10" type="button" onclick="javascript:window.open('AddOtorganteJuridico.php?cod_sct=<?php echo $fila['cod_sct'];?>&cod_per=<?php echo $fila['cod_usu'];?>','','width=800, height=500, scrollbars=NO');" value="Add Otorgante Juridico" /></td>
                 </tr>
                 
                 <tr>
                         <td id="l">Favorecidos Juridicos</td>
                         <td id="C">
                           <?php
-                            //echo "Favorecidos Juridicos-----------------------------------------------------<br>";
+                            //echo "Favorecidos Juridicos-----------------------------------------------------<br>";}
+                            $dataFavorecidos = $recojo->ListadoFavorecido($numero);
+                            
                             while($filaf = $dataFavorecidos->fetch_assoc())
                             {
-                                echo $filaf['cod_inv_ju']."<br>";
+                                if($filaf['cod_inv_ju'] != 0)
+                                {
+                                echo $nombreJuridico->VerNombreJuridico($filaf['cod_inv_ju']);
+                            ?>
+                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $fila['cod_usu'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
+                          <?php
+                                echo "<br>";
+                                }
                             }
                           ?>
                         </td>
-                        <td id="R"></td>
+                        <td id="R"><input name="boton1" size="10" type="button" onclick="javascript:window.open('AddFavorecidoJuridico.php?cod_sct=<?php echo $fila['cod_sct'];?>&cod_per=<?php echo $fila['cod_usu'];?>','','width=800, height=500, scrollbars=NO');" value="Add Otorgante Juridico" /></td>
                 </tr>
             </table>
 
@@ -291,7 +321,7 @@ echo DatosEscrituras($lista[$cont]);
 </body>
 </html>
 <?php  } ?>
-  <form action="" method="post">
+  <form action="" method="get">
         <input name="mas" type="submit" value="Siguiente >>">
         <input name="menos" type="submit" value="<< Retroceder">
         <input type="hidden" name="contador" value="<?php echo $cont; ?>">

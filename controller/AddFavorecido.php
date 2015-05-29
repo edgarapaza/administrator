@@ -26,9 +26,6 @@ if(isset($_REQUEST['btnBuscar']))
 	{
 	    $result = $obj->BuscarNombre($nom_corregido, $paterno);
 	}
-        
-        
-        
 }
 ?>
 <!DOCTYPE html>
@@ -70,7 +67,7 @@ if(isset($_REQUEST['btnBuscar']))
 		</div>
 	</form>
 
-    <form action="AddPersonaO.php" method="post" name="frmGuardar" id="frmGuardar">
+    <form action="AddPersonaF.php" method="post" name="frmGuardar" id="frmGuardar">
 	<table border="1" width="600">
             
             
@@ -92,17 +89,14 @@ if(isset($_REQUEST['btnBuscar']))
                             <input type="text" name="involucrado" value="<?php echo $fila['Cod_inv']; ?>" />
                             <input type="text" name="cod_sct" value="<?php echo $codEscritura; ?>" />
                             <input type="text" name="cod_per" value="<?php echo $codPersonal; ?>" />
-                            <a href="AddPersonaO.php?cod_sct=<?php echo $codEscritura; ?>&involucrado=<?php echo $fila['Cod_inv']; ?>&cod_per=<?php echo $codPersonal; ?>">Guardar</a>
+                            <a href="AddPersonaF.php?cod_sct=<?php echo $codEscritura; ?>&involucrado=<?php echo $fila['Cod_inv']; ?>&cod_per=<?php echo $codPersonal; ?>">Guardar</a>
                             
                         </td>
                         
 		</tr>
                                  <?php
                                 }
-                                if($result->num_rows == 0)  
-                                {
-                                    echo "El nombre NOOOOOO existe";
-                                }
+
                                 ?>
 	</table>
     </form>

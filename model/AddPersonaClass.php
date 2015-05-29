@@ -6,7 +6,37 @@ class AddPersonaClass {
         
         require '../coreapp/conection.php';
         
-        $sql = "INSERT INTO escriotor1 (cod_sct, cod_inv, cod_per) VALUES ($cod_sct, $cod_inv, $cod_per);";
+        $sql = "INSERT INTO escriotor1 (cod_sct, cod_inv, cod_per,cod_inv_ju) VALUES ($cod_sct, $cod_inv, $cod_per,0);";
+        $result = $mysqli->query($sql);
+        
+        return $result;
+    }
+    
+    public function AgregarFavorecido($cod_sct, $cod_inv, $cod_per) {
+        
+        require '../coreapp/conection.php';
+        
+        $sql = "INSERT INTO escrifavor1 (cod_sct, cod_inv, cod_per,cod_inv_ju) VALUES ($cod_sct, $cod_inv, $cod_per,0);";
+        $result = $mysqli->query($sql);
+        
+        return $result;
+    }
+    
+    public function AgregarOtorganteJuridico($cod_sct,$cod_per,$cod_inv_ju) {
+        
+        require '../coreapp/conection.php';
+        
+        $sql = "INSERT INTO dbarp.escriotor1 (cod_sct,cod_inv,cod_per,cod_inv_ju) VALUES ($cod_sct,0,$cod_per,$cod_inv_ju);";
+        $result = $mysqli->query($sql);
+        
+        return $result;
+    }
+    
+    public function AgregarFavorecidoJuridico($cod_sct,$cod_per,$cod_inv_ju) {
+        
+        require '../coreapp/conection.php';
+        
+        $sql = "INSERT INTO dbarp.escrifavor1 (cod_sct,cod_inv,cod_per,cod_inv_ju) VALUES ($cod_sct,0,$cod_per,$cod_inv_ju);";
         $result = $mysqli->query($sql);
         
         return $result;
@@ -31,4 +61,16 @@ class AddPersonaClass {
         
         return $result;
     }
+    
+    public function BuscarJuridico($razonSocial) {
+        
+        require '../coreapp/conection.php';
+        
+        $sql = "SELECT Cod_inv, Raz_inv FROM involjuridicas1 WHERE Raz_inv LIKE '%$razonSocial%';";
+        $result = $mysqli->query($sql);
+        
+        return $result;
+    }
+
 }
+

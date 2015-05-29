@@ -12,4 +12,13 @@ class NombresClass {
         //echo $fila['notario'];
         return $fila['nombre'];
     }
+    
+    public function NombresDuplicados() {
+        
+        
+    }
+    
+    public function AgregarNombre() {
+        
+    }
 }
