@@ -245,7 +245,7 @@ echo DatosEscrituras($lista[$cont]);
                         </tr>
                         <tr>
                                 <td>Sub Serie: *</td>
-                                <td><?php echo $subserie->VerSubserie($fila['cod_sub']);?> <input type="button" name="btnCambiarSubSerie" value="Cambiar Subserie" /></td>
+                                <td><?php echo $subserie->VerSubserie($fila['cod_sub']);?> <input name="boton1" size="10" type="button" onclick="javascript:window.open('CambiarSubserie.php?cod_sct=<?php echo $fila['cod_sct'];?>','','width=800, height=500, scrollbars=YES');" value="Cambiar la serie" /> </td>
                         </tr>
                         <tr>
                             <td>Notario</td>

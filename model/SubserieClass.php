@@ -5,10 +5,10 @@ class SubserieClass {
     public function VerSubserie($codigo) {
         require '../coreapp/conection.php';
         
-        $sql = "SELECT des_sub FROM subseries WHERE cod_sub = $codigo;";
+        $sql = "SELECT  des_sub FROM subseries WHERE cod_sub = $codigo;";
         $result = $mysqli->query($sql);
+        
         $fila = $result->fetch_assoc();
-        //echo $fila['notario'];
         return $fila['des_sub'];
     }
 }
