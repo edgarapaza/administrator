@@ -93,8 +93,9 @@ echo DatosEscrituras($lista[$cont]);
       <table>
         <tr>
           <td width="30%">El protocolo enviado es:</td>
-          <td width="30%">El numero total de datos es: </td>
-          <td width="30%">El Registro es: <?php echo $fila['cod_sct'];?></td>
+          <td width="20%">El numero total de datos es: </td>
+          <td width="20%">El Registro es: <?php echo $fila['cod_sct'];?></td>
+          <td width="20%"> <a href="../correcciones/index.php" style="color:white;">Nuevo Protocolo</a></td>
         </tr>
       </table>
 
@@ -146,6 +147,8 @@ echo DatosEscrituras($lista[$cont]);
                                   {
                                       echo $nombre->VerNombre($filao['cod_inv']);
                               ?>
+                              
+                              
                                 <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $filao['cod_inv'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
                                 
                          <?php
