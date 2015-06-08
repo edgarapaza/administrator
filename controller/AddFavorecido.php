@@ -31,7 +31,6 @@ if(isset($_REQUEST['btnBuscar']))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
 	<title>Agregar Favorecido</title>
 	<link rel="stylesheet" href="css/styleform.css">
 	<link rel="stylesheet" href="css/styletable.css">

@@ -21,7 +21,6 @@ if(isset($_REQUEST['btnBuscar']))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
 	<title>Agregar Otorgante Juridico</title>
         <script type="text/javascript">
             function Guardar()
