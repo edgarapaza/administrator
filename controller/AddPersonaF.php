@@ -3,9 +3,10 @@ $escritura = $_REQUEST['cod_sct'];
 $involucrado = $_REQUEST['involucrado'];
 $personal = $_REQUEST['cod_per'];
 
-echo "Escritura:".$escritura;
-echo "Involucrado:".$involucrado;
-echo "Personal:".$personal;
+//echo "Escritura:".$escritura;
+//echo "Involucrado:".$involucrado;
+//echo "Personal:".$personal;
+echo "Nombre Agregado. CIERRE LA VENTANA";
 
 AddFavorecido( $escritura, $involucrado, $personal);
         

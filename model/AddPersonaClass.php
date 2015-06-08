@@ -71,6 +71,34 @@ class AddPersonaClass {
         
         return $result;
     }
+    
+    public function Duplicados($nombre='',$paterno='',$materno='') {
+        
+        require '../coreapp/conection.php';
+        
+        $sql="SELECT cod_inv FROM involucrados1 WHERE nom_inv = '$nombre' and pat_inv = '$paterno' and mat_inv = '$materno';";
+        
+        $dato = $mysqli->query($sql);
+        $numero = $dato->num_rows;
+     
+        if($numero > 0)
+        {
+            return TRUE;
+        }
+        else
+        {
+            return FALSE;
+        }
+            
+            
+    }
+    
+        public function NuevaPersona($Pat_inv, $Mat_inv, $Nom_inv) {
+            require '../coreapp/conection.php';
+            
+            $sql = "INSERT INTO involucrados1 (Pat_inv,Mat_inv,Nom_inv) VALUES ('$Pat_inv', '$Mat_inv', '$Nom_inv');";
+            $mysqli->query($sql);
+            
+        }
 
 }
-

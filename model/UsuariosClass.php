@@ -33,5 +33,16 @@ class UsuariosClass
 			echo $sqlinsert;
 		}
 	}
+        
+                public function ModificarJuridico($cod_inv='', $razon='')
+	{
+		require '../coreapp/conection.php';
+
+		$sql = "UPDATE involjuridicas1 SET Raz_inv = '$razon' WHERE Cod_inv = $cod_inv LIMIT 1;";
+
+		$result = $mysqli->query($sql);
+		return $result;
+	}
 }
+
 ?>

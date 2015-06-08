@@ -13,34 +13,27 @@ $datos = $valores->fetch_assoc();
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <link rel="stylesheet" type="text/css" href="css/styleform.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-
-<p>Modificar Nombres del Sistema</p>
-<form id="form1" name="form1" method="post" action="Usuarios.php">
-  <table width="481" border="0">
-    <tr>
-      <td width="125">Codigo BD: </td>
-      <td width="453"><?php echo $datos['Cod_inv'];?><input type="hidden" name="codigo" value="<?php echo $datos['Cod_inv'];?>" /></td>
-    </tr>
-    <tr>
-      <td>Nombre(s):</td>
-      <td><input name="nombres" type="text" id="nombres" value="<?php echo $datos['Nom_inv'];?>" size="40" /></td>
-    </tr>
-    <tr>
-      <td>Paterno:</td>
-      <td><input name="paterno" type="text" id="paterno" value="<?php echo $datos['Pat_inv'];?>" size="40" /></td>
-    </tr>
-    <tr>
-      <td>Materno:</td>
-      <td><input name="materno" type="text" id="materno" value="<?php echo $datos['Mat_inv'];?>" size="40"/></td>
-    </tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td><input type="submit" name="btnGuardar" value="Guardar Cambios" onclick="javascript:window.close();" />
-      <input name="cancelar" type="button" value="Cancelar Cambios" onclick="javascript:window.close();" /></td>
-    </tr>
-  </table>
-</form>
+  <h3>Modificar Nombres del Sistema</h3>
+  <div class="general">
+      <form id="form1" name="form1" method="post" action="Usuarios.php">
+          <div class="formulario">
+              <ul>
+                <li><span class="required">Datos requeridos</span>
+                </li>
+                <input type="hidden" name="codigo" value="<?php echo $datos['Cod_inv'];?>" />
+                <li> <label for="nombres">Nombres:</label> <input name="nombres" type="text" id="nombres" value="<?php echo $datos['Nom_inv'];?>" size="40" /></li>
+                <li> <label for="paterno">Paterno:</label> <input name="paterno" type="text" id="paterno" value="<?php echo $datos['Pat_inv'];?>" size="40" /></li>
+                <li> <label for="materno">Materno:</label> <input name="materno" type="text" id="materno" value="<?php echo $datos['Mat_inv'];?>" size="40"/></li>
+                <li> <button class="submit" type="submit" name="btnGuardar" value="Guardar Cambios" onclick="javascript:window.close();">Guardar Cambios
+                     
+                </button>
+              </ul>
+          </div>
+      </form>
+  </div>
 </body>
 </html>

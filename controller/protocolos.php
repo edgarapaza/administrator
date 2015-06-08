@@ -1,19 +1,13 @@
 <?php
-
-
-
-
-
-
-
+session_start();
 
 if(isset($_REQUEST['revisar']))
 {
     $numeroProtocolo = $_REQUEST["protocolo"];
 
-    
-            $nombre_archivo = 'protocolo.txt';
-              $contenido = $numeroProtocolo;
+      $_SESSION['protocolo'] = $numeroProtocolo;
+      $nombre_archivo = 'protocolo.txt';
+      $contenido = $numeroProtocolo;
 
           // Primero vamos a asegurarnos de que el archivo existe y es escribible.
           if (is_writable($nombre_archivo)) 

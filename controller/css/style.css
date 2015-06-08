@@ -149,7 +149,7 @@
 	border:solid silver 2px;
 	border-radius:10px;
 	padding: 10px;
-	margin-top: 200px;
+	margin-top: 220px;
 }
 
 textarea{
@@ -175,7 +175,7 @@ textarea{
 .center, .left, .right, .left2, .right2{
 /*background: rgba(176, 196, 222, 0.4); /* 50% transparent */
 
-background: #ccc; /* Show a solid color for older browsers */
+  background: #ccc; /* Show a solid color for older browsers */
   background: -moz-linear-gradient(#fff, #ccc);
   background: -o-linear-gradient(#fff, #ccc);
   background: -webkit-linear-gradient(#fff, #ccc);
@@ -197,15 +197,12 @@ body{
 
 
 .general{
-	/*background-image: url(subcabecera_r2.gif);
-	background-repeat: no-repeat;
-	background-position: center;
-background-color: rgba(26, 198, 90, 1);
-
-/*background-image: url(small_steps.png);*/
-
-/*background: #EEEEEE url(light.png);*/
-
+        /*background-image: url(subcabecera_r2.gif);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-color: rgba(26, 198, 90, 1);
+        /*background-image: url(small_steps.png);*/
+        /*background: #EEEEEE url(light.png);*/
 }
 
 .part1{
@@ -218,6 +215,7 @@ background-color: rgba(26, 198, 90, 1);
 	height: auto;
 	margin-top: 10px;
 	width: 100%;
+        
 
 }
 

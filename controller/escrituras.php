@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require 'listado.php';
 
 function leer_fichero_completo(){
@@ -11,7 +13,8 @@ function leer_fichero_completo(){
    return $contenido_fichero;
 }
 
-$numeroProtocolo = leer_fichero_completo();
+// Recoge el numero de protocolo de la session
+$numeroProtocolo = $_SESSION['protocolo'];
 echo "<br><br>NUMERO DE PROTOCOLO: ".$numeroProtocolo;
 
 $resultado = Listado($numeroProtocolo);
@@ -79,9 +82,10 @@ echo DatosEscrituras($lista[$cont]);
 
 ?>
 
-
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Sistema de Revision de Protocolos</title>
 </head>
@@ -149,7 +153,8 @@ echo DatosEscrituras($lista[$cont]);
                               ?>
                               
                               
-                                <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $filao['cod_inv'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
+                                <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $filao['cod_inv'];?>','','width=800, height=500, scrollbars=YES');" value="Corregir Nombre" />
+                                <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/elimnarNombre.php?cod_usu=<?php echo $filao['cod_inv'];?>&cod_sct=<?php echo $fila['cod_sct'];?>','','width=500, height=200, scrollbars=NO');" value="X" />
                                 
                          <?php
                                 echo "<br>";
@@ -158,7 +163,7 @@ echo DatosEscrituras($lista[$cont]);
                             
                        ?>
                         </td>
-                        <td id="R"><input name="boton1" size="10" type="button" onclick="javascript:window.open('AddOtorgante.php?cod_sct=<?php echo $fila['cod_sct'];?>&cod_per=<?php echo $fila['cod_usu'];?>','','width=800, height=500, scrollbars=NO');" value="Agregar Otorgante" /></td>
+                        <td id="R"><input name="boton1" size="10" type="button" onclick="javascript:window.open('AddOtorgante.php?cod_sct=<?php echo $fila['cod_sct'];?>&cod_per=<?php echo $fila['cod_usu'];?>','','width=800, height=500, scrollbars=YES');" value="Agregar Otorgante" /></td>
                 </tr>
                 <tr>
                     <td id="l">Favorecidos</td>
@@ -175,7 +180,8 @@ echo DatosEscrituras($lista[$cont]);
                               
                               
                           ?>
-                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $fila['cod_usu'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
+                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $filaf['cod_inv'];?>','','width=800, height=500, scrollbars=YES');" value="Corregir Nombre" />
+                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/elimnarNombreF.php?cod_inv=<?php echo $filaf['cod_inv'];?>&cod_sct=<?php echo $fila['cod_sct'];?>','','width=500, height=200, scrollbars=NO');" value="X" />
                           <?php
                             echo "<br>";
                               }
@@ -184,7 +190,7 @@ echo DatosEscrituras($lista[$cont]);
                         ?>
                     </td>
                     
-                    <td id="R"><input name="boton1" size="10" type="button" onclick="javascript:window.open('AddFavorecido.php?cod_sct=<?php echo $fila['cod_sct'];?>&cod_per=<?php echo $fila['cod_usu'];?>','','width=800, height=500, scrollbars=NO');" value="Agregar Favorecido" /></td>
+                    <td id="R"><input name="boton1" size="10" type="button" onclick="javascript:window.open('AddFavorecido.php?cod_sct=<?php echo $fila['cod_sct'];?>&cod_per=<?php echo $fila['cod_usu'];?>','','width=800, height=500, scrollbars=YES');" value="Agregar Favorecido" /></td>
                 </tr>
                 
                 <tr>
@@ -200,7 +206,8 @@ echo DatosEscrituras($lista[$cont]);
                                 {
                                 echo $nombreJuridico->VerNombreJuridico($filaoj['cod_inv_ju']);
                             ?>
-                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $fila['cod_usu'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
+                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombresJuridicos.php?cod_inv=<?php echo $filaoj['cod_inv_ju'];?>','','width=1100, height=400, scrollbars=YES');" value="Corregir Nombre" />
+                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/elimnarJuridicoO.php?cod_inv=<?php echo $filaoj['cod_inv_ju'];?>&cod_sct=<?php echo $fila['cod_sct'];?>','','width=500, height=200, scrollbars=NO');" value="X" />
                           <?php
                                 echo "<br>";
                                 }
@@ -223,14 +230,15 @@ echo DatosEscrituras($lista[$cont]);
                                 {
                                 echo $nombreJuridico->VerNombreJuridico($filaf['cod_inv_ju']);
                             ?>
-                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombres.php?cod_usu=<?php echo $fila['cod_usu'];?>','','width=500, height=300, scrollbars=NO');" value="Corregir Nombre" />
+                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/modificarNombresJuridicos.php?cod_inv=<?php echo $filaf['cod_inv_ju'];?>','','width=1100, height=400, scrollbars=YES');" value="Corregir Nombre" />
+                            <input name="boton1" size="10" type="button" onclick="javascript:window.open('../controller/elimnarJuridicoF.php?cod_inv=<?php echo $filaf['cod_inv_ju'];?>&cod_sct=<?php echo $fila['cod_sct'];?>','','width=600, height=600, scrollbars=NO');" value="X" />
                           <?php
                                 echo "<br>";
                                 }
                             }
                           ?>
                         </td>
-                        <td id="R"><input name="boton1" size="10" type="button" onclick="javascript:window.open('AddFavorecidoJuridico.php?cod_sct=<?php echo $fila['cod_sct'];?>&cod_per=<?php echo $fila['cod_usu'];?>','','width=800, height=500, scrollbars=NO');" value="Add Otorgante Juridico" /></td>
+                        <td id="R"><input name="boton1" size="10" type="button" onclick="javascript:window.open('AddFavorecidoJuridico.php?cod_sct=<?php echo $fila['cod_sct'];?>&cod_per=<?php echo $fila['cod_usu'];?>','','width=800, height=500, scrollbars=NO');" value="Add Favorecido Juridico" /></td>
                 </tr>
             </table>
 

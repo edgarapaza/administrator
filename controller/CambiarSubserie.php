@@ -20,7 +20,6 @@ if(isset($_REQUEST['btnBuscar']))
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<meta charset="UTF-8">
 	<title>Agregar Otorgante</title>
         <script type="text/javascript">
             function Guardar()
@@ -33,54 +32,55 @@ if(isset($_REQUEST['btnBuscar']))
                 }
             }
         </script>
+        <link rel="stylesheet" href="css/styleform.css">
+		<link rel="stylesheet" href="css/styletable.css">
 </head>
 <body>
 	<form action="" method="get">
-            <input type="text" name="cod_sct" value="<?php echo $codEscritura; ?>" />
-            
-		<div id="buscador">
-			<table>
-				<tr>
-					<td>Escriba el nombre de la Sub Serie Correspondiente a la escritura</td>
-					<td></td>
-				</tr>
-				<tr>
-                                    <td><input type="text" name="subserie" placeholder="Escriba la sub serie de la escritura" required="required" size="80" /></td>
-                                    <td><input type="submit" name="btnBuscar" value="Buscar"></td>
-				</tr>
-			</table>
+            <input type="hidden" name="cod_sct" value="<?php echo $codEscritura; ?>" />
+        <div class="formulario">
+			<div class="formulario">
+				<ul>
+					<li><h2>Modificar Serie</h2>
+						<span class="required">Datos requeridos</span>
+					</li>
+					<li> <label for="name">Sub Serie:</label> <input type="text" name="subserie" placeholder="Escriba la sub serie de la escritura" required="required" size="80" /></li>
+					<li> <button class="submit" type="submit" name="btnBuscar" value="Buscar">Buscar Serie</button>
+				</ul>
 		</div>
 	</form>
 
     <form action="" method="post" name="frmGuardar" id="frmGuardar">
-	<table border="1" width="600">
-            
-            
-		<tr>
-			<td>Nombre</td>
-			<td>Opciones</td>
-		</tr>
-                                <?php
-                                while($fila = $result->fetch_assoc())
-                                {
-                                ?>
-		<tr>
-			<td><?php echo $fila['des_sub'];?></td>
-                        <td>
-                            <input type="text" name="codigojuridico" value="<?php echo $fila['cod_sub']; ?>" />
-                            <input type="text" name="cod_sct" value="<?php echo $codEscritura; ?>" />
-                            
-                            
-                            <a href="SaveSubserie.php?cod_sct=<?php echo $codEscritura; ?>&codigoSubserie=<?php echo $fila['cod_sub']; ?>">Cambiar</a>
-                            
-                        </td>
-                        
-		</tr>
-                                 <?php
-                                }
+	<div class="CSSTableGenerator" >
+			<table border="1" width="600">
+		            
+		            
+				<tr>
+					<td>Nombre</td>
+					<td>Opciones</td>
+				</tr>
+		                                <?php
+		                                while($fila = $result->fetch_assoc())
+		                                {
+		                                ?>
+				<tr>
+					<td><?php echo $fila['des_sub'];?></td>
+		                        <td>
+		                            <input type="hidden" name="codigojuridico" value="<?php echo $fila['cod_sub']; ?>" />
+		                            <input type="hidden" name="cod_sct" value="<?php echo $codEscritura; ?>" />
+		                            
+		                      
+		                            <a href="SaveSubserie.php?cod_sct=<?php echo $codEscritura; ?>&codigoSubserie=<?php echo $fila['cod_sub']; ?>">Cambiar</a>
+		                            
+		                        </td>
+		                        
+				</tr>
+		                                 <?php
+		                                }
 
-                                ?>
-	</table>
+		                                ?>
+			</table>
+	</div>
     </form>
 </body>
 </html>
