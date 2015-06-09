@@ -85,6 +85,7 @@ echo DatosEscrituras($lista[$cont]);
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Sistema de Revision de Protocolos</title>
 </head>
