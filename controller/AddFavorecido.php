@@ -36,7 +36,7 @@ if(isset($_REQUEST['btnBuscar']))
 	<link rel="stylesheet" href="css/styletable.css">
 </head>
 <body>
-	<form action="" method="get">
+	<form>
         <input type="hidden" name="cod_sct" value="<?php echo $codEscritura; ?>" />
         <input type="hidden" name="cod_per" value="<?php echo $codPersonal; ?>" />
 		
@@ -82,7 +82,14 @@ if(isset($_REQUEST['btnBuscar']))
 			</tr>
 	                                 <?php
 	                                }
-
+	                                if($result->num_rows == 0)  
+	                                {
+	                                    echo "El nombre NOOOOOO existe.";
+	                                ?>
+                        <p>El nombre no existe. Desea Agregarlo a la Base de Datos.</p> <a href="NewPerson_f.php?nombre=<?php echo $nombre; ?>&paterno=<?php echo $paterno; ?>&materno=<?php echo $materno; ?>&cod_sct=<?php echo $codEscritura; ?>&cod_per=<?php echo $codPersonal; ?>"> PRESIONE AQUI </a>
+	                                <?php
+	                                
+	                                }
 	                                ?>
 		</table>
 	</div>

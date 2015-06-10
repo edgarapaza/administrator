@@ -115,14 +115,15 @@ echo DatosEscrituras($lista[$cont]);
         <div class="part1">
             <div class="left">
                     <table >
+                          <tr>
+                            <td id="l">Folio: *</td><td id="R"><input type="text" name="numeroFolio" value="<?php echo $fila['num_fol']; ?>" /></td>
+                          </tr>
                            <tr>
                             <td id="l">Escritura: *</td><td id="R"><input type="text" name="numeroEscritura" value="<?php echo $fila['num_sct'];?>" /></td>
                           </tr>
                           <tr>
-                            <td id="l">Protocolo:</td><td id="R"><?php echo $fila['cod_pro']; ?></td>
-                          </tr>
-                          <tr>
-                            <td id="l">Folio: *</td><td id="R"><input type="text" name="numeroFolio" value="<?php echo $fila['num_fol']; ?>" /></td>
+                                <td>Total Folios: *</td>
+                                <td><input type="text" name="cantidadFolios" value="<?php echo $fila['can_fol'];?>" /></td>
                           </tr>
                           <tr>
                             <td id="l">Fecha: *</td><td id="R"><input type="date" name="fechaDocumento" value="<?php echo $fila['fec_doc'];?>" /></td>
@@ -266,10 +267,7 @@ echo DatosEscrituras($lista[$cont]);
                                 <td>Distrito:</td>
                                 <td><?php echo $distritos->VerDistrito($fila['cod_dst']);?></td>
                         </tr>
-                        <tr>
-                                <td>Total Folios: *</td>
-                                <td><input type="text" name="cantidadFolios" value="<?php echo $fila['can_fol'];?>" /></td>
-                        </tr>
+                        
                         <tr>
                                 <td>Codigo Trabajador:</td>
                                 <td><?php echo $trabajador->VerTrabajador($fila['cod_usu']);?></td>
