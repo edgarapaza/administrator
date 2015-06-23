@@ -3,16 +3,6 @@ session_start();
 
 require 'listado.php';
 
-function leer_fichero_completo(){
-   //abrimos el archivo de texto y obtenemos el identificador
-   $nombre_fichero="protocolo.txt";
-   $fichero_texto = fopen ($nombre_fichero, "r");
-   //obtenemos de una sola vez todo el contenido del fichero
-   //OJO! Debido a filesize(), sólo funcionará con archivos de texto
-   $contenido_fichero = fread($fichero_texto, filesize($nombre_fichero));
-   return $contenido_fichero;
-}
-
 // Recoge el numero de protocolo de la session
 $numeroProtocolo = $_SESSION['protocolo'];
 echo "<br><br>NUMERO DE PROTOCOLO: ".$numeroProtocolo;
@@ -58,6 +48,8 @@ echo " ----------------------  Registro Actual: ".$cont;
 echo DatosEscrituras($lista[$cont]);
 
 
+ 
+
   function DatosEscrituras($numero)
     {
 
@@ -91,6 +83,32 @@ echo DatosEscrituras($lista[$cont]);
 </head>
 
 <body>
+
+
+
+
+        <form>
+          <input type="number" name="numeroEscrituraIngresada">
+          <button type="submit" name="btnBusca">Buscar</button>
+        </form>
+
+    <?php
+      $numero_EscrituraIngresada = $_REQUEST['numeroEscrituraIngresada'];
+      echo "PRESIONADO: ";
+      echo $numero_EscrituraIngresada;
+      if($numero_EscrituraIngresada == $fila['num_sct'])
+      {
+        echo "Cod de la escritura: ".$fila['cod_sct'];
+        echo "La Escritura existe";
+        //echo DatosEscrituras();
+      }
+      else
+      {
+        echo "La escribtua no existe";
+      }
+      
+    ?>
+
 
 <div class="general">
     <div class="superior">
@@ -129,7 +147,7 @@ echo DatosEscrituras($lista[$cont]);
                             <td id="l">Fecha: *</td><td id="R"><input type="date" name="fechaDocumento" value="<?php echo $fila['fec_doc'];?>" /></td>
                           </tr>
                           <tr>
-                          <td><button name="boton" type="button"><img src="img/Search.jpg" widht='10' height='20'> Buscar </button></td>
+                          <td><button name="buscarEscritura" type="button" ><img src="img/Search.jpg" widht='10' height='20'> Buscar </button></td>
                           <td><button name="boton" type="button"><img src="img/editar.jpg" widht='10' height='20'> Editar </button></td>
                         </tr>
 
@@ -309,18 +327,7 @@ echo DatosEscrituras($lista[$cont]);
         </div>
 </div>
 
-        <footer>
-            <center>
-                <br>
-                <div class="foot1">
-                    <img src="img/ARCHIVO_REGIONAL.png" width="50px" height="60px">
-                </div>
-                    <div class="foot2">
-                        Archivo Regional Puno 2015
-                    <p>Oficina de Informatica</p>
-                </div>
-            </center>
-        </footer>
+        
 
     </div>
 </div>
