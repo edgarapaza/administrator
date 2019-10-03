@@ -37,5 +37,5 @@ if(isset($_REQUEST['revisar']))
               echo "El archivo $nombre_archivo no es escribible";
           }
 
-    header("Location: ../view/escriturasfinal.php");
+    header("Location: ../changeProtocolo.php");
 }
