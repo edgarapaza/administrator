@@ -25,7 +25,7 @@
                 </form>
             </div>
             <div class="col-md-4">
-                <p>Lorem</p>
+                <p>aaaaaaaaaaaaa</p>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 <?php
 
-    class EscrituraClass
+class EscrituraClass
     {
         private $conn;
         function __construct(){
@@ -16,8 +16,6 @@
             $rpta = $this->conn->query($sql);
             $data = $rpta->fetch_array();
             return $data;
-
-            $mysqli->close();
         }
 
         function ListadoOtorgantes($numero) {
@@ -26,8 +24,6 @@
             $rpta = $this->conn->query($sql);
             $data = $rpta->fetch_assoc();
             return $data;
-
-            $mysqli->close();
         }
 
         function ListadoFavorecido($numero) {
@@ -36,8 +32,6 @@
             $rpta = $this->conn->query($sql);
             $data = $rpta->fetch_assoc();
             return $data;
-
-            $mysqli->close();
         }
 
         function Buscar($numEscritura, $protocolo){
@@ -45,8 +39,6 @@
             $rpta = $this->conn->query($sql);
             $data = $rpta->fetch_assoc();
             return $data;
-
-            $mysqli->close();
         }
     }
 
