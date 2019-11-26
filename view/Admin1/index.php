@@ -35,7 +35,7 @@ $query = $conn->query($cons1);
         <a href="report_ingreso_mensual.php" class="btn btn-success">Reporte Mensual</a>
         <a href="report_ingreso_anual.php" class="btn btn-info">Reporte Anual</a>
 
-        <a href="http://localhost/search" target="_black" class="btn btn-danger">Sistema de Busqueda</a>
+        <a href="http://192.168.0.73/search" target="_black" class="btn btn-danger">Sistema de Busqueda</a>
         <hr/>
         <h3>Regresar a la pantalla inicial</h3>
         <a href="../index.php" class="btn btn-success">DashBoard</a>

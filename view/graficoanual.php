@@ -309,6 +309,10 @@ if(!$result = $link->query($sql)) die(); //si la conexión cancelar programa
                                     <option value="2016">2016</option>
                                     <option value="2017">2017</option>
                                     <option value="2018">2018</option>
+                                    <option value="2018">2019</option>
+                                    <option value="2018">2020</option>
+                                    <option value="2018">2021</option>
+                                    <option value="2018">2022</option>
                                 </select>
                                 <input type="submit" class="btn btn-lg btn-success btn-block" value="Generar Gráfico" name="btnReporte">
                                 </form>

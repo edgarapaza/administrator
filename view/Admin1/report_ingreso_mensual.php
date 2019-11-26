@@ -44,7 +44,7 @@ $anio       = $_REQUEST['anio'];
             <select name="trab" class="form-control">
               <option value="%">Todos</option>
               <?php
-              $tra =$conn->query("SELECT cod_usu, CONCAT(nom_usu,' ',pat_usu) AS Usuario FROM usuarios WHERE chk_usu <> 0;");
+              $tra =$conn->query("SELECT cod_usu, CONCAT(nom_usu,' ',pat_usu) AS Usuario FROM usuarios WHERE chk_usu <> 0 AND estado_usu = 1;");
               while ($res_tra = $tra->fetch_array()){
               ?>
               <option value="<?php echo $res_tra[0];?>">
@@ -80,7 +80,13 @@ $anio       = $_REQUEST['anio'];
             <option value="2013">2013</option>
             <option value="2014">2014</option>
             <option value="2015">2015</option>
-            <option value="2016" selected>2016</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019" selected>2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            
           </select>
 
           <button name="buscar2" type="submit" class="btn btn-danger"/>Consultar</button>
