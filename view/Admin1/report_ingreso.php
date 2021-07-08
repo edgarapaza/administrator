@@ -1,7 +1,7 @@
 <?php
-require_once '../../coreapp/Conexion.php';
-$link = new Conexion();
-$conn = $link->Conectar();
+require_once "../../model/Conexion.php";
+
+$conn = new Conexion();
 
 $fec_actual= date("Y-m-d");
 $cod_usu = $_REQUEST['trab'];
@@ -13,7 +13,7 @@ if($fec_fin == ""){
    $sql .=" WHERE hra_ing LIKE '$fec_ini%' ";
    $sql .= "AND cod_usu like '$cod_usu' ORDER BY hra_ing";
 
-   $query = $conn->query($sql);
+   $query = $conn->ConsultaCon($sql);
    }
    else{
    	if($fec_ini == $fec_fin){
@@ -22,14 +22,14 @@ if($fec_fin == ""){
       $sql .=" WHERE hra_ing LIKE '$fec_ini%' ";
       $sql .= "AND cod_usu like '$cod_usu' ORDER BY hra_ing";
 
-      $query = $conn->query($sql);
+      $query = $conn->ConsultaCon($sql);
   	}
   	else{
   	   $sql = "SELECT hra_ing,cod_usu,cod_sct,num_sct FROM escrituras1 ";
   	   $sql .=" WHERE hra_ing between '$fec_ini 00:00:00' AND '$fec_fin 23:59:59' ";
   	   $sql .= "AND cod_usu like '$cod_usu' ORDER BY hra_ing";
 
-  	  $query = $conn->query($sql);
+  	  $query = $conn->ConsultaCon($sql);
      	}
   }
 ?>
@@ -63,7 +63,8 @@ if($fec_fin == ""){
               <select name="trab" class="form-control">
                 <option value="%">Todos</option>
                 <?php
-                   $tra = $conn->query("SELECT cod_usu, CONCAT(nom_usu,' ',pat_usu) AS Usuario FROM usuarios WHERE estado_usu = 1");
+                  $sql2 = "SELECT cod_usu, CONCAT(nom_usu,' ',pat_usu) AS Usuario FROM usuarios WHERE estado_usu = 1";
+                   $tra = $conn->ConsultaCon($sql2);
                    while ($res_tra = $tra->fetch_array()){
                 ?>
                 <option value="<?php echo $res_tra[0];?>">
@@ -97,8 +98,9 @@ if($fec_fin == ""){
              echo "Todos los Usuarios";
            }
            else{
-             @$nom = $conn->query("SELECT CONCAT(nom_usu,' ',pat_usu,' ',mat_usu) AS Usuario FROM usuarios WHERE cod_usu = $cod_usu AND estado_usu = 0");
-             @$Dat = $nom->fetch_array();
+            $sql3 = "SELECT CONCAT(nom_usu,' ',pat_usu,' ',mat_usu) AS Usuario FROM usuarios WHERE cod_usu = $cod_usu AND estado_usu = 0";
+             @$Dat = $conn->ConsultaArray($sql);
+             
              echo $Dat[0];
            }
            ?>

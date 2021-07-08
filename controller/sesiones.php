@@ -6,7 +6,9 @@ session_start();
 	$pass = trim($_REQUEST['password']);
 
 	$validacion = new Validacion();
-	$data = $validacion->ValidacionCuenta($user,$pass);
+	$data = $validacion->ValidacionCuenta($user, $pass);
+	
+	echo $data['niv_usu'];
 
 	if($data['niv_usu'] == 1){
 	    $_SESSION['administrator'] = $data['cod_usu'];
@@ -14,7 +16,5 @@ session_start();
 	}
 	else
 	{
-	    header("Location: ../login.html");
+	   header("Location: ../login.html");
 	}
-
-?>

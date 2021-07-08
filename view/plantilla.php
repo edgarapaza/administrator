@@ -8,8 +8,8 @@ if (isset($_SESSION['administrator']))
 
 <div class="row">
     <div class="col-md-12">
-        <h3>Estadisticas diaras</h3>
-
+        <h3>Cuerpo</h3>
+        
     </div>
 </div>
 

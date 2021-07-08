@@ -1,17 +1,9 @@
 <?php
 
-require_once '../../coreapp/Conexion.php';
-$link = new Conexion();
-$conn = $link->Conectar();
-
-/*$codigo_usuario=$_SESSION['user'];
-$cons1 = "SELECT CONCAT(nom_usu,' ',pat_usu,' ',mat_usu) AS Trabajor FROM usuarios WHERE cod_usu = $codigo_usuario";
-$query = $conn->query($cons1);
-@$dato1 = $query->fetch_array($query);*/
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -30,7 +22,7 @@ $query = $conn->query($cons1);
         <p>Puede consultarse en cualquier momento y debe utilizarse para medir el rendimiento medio de cada trabajador y hacer un analisis del avance.  Se tiene en el Dashboard principal herramientas en gráfico de barras para mostrar la misma información pero presentada en gráficos de Barras.</p>
         <hr>
         
-        <a href="report_ingreso.php" class="btn btn-primary">Ver Ingresos a Base de Datos</a>
+        <a href="report_ingreso.php" class="btn btn-primary">Rerpotes Individuales</a>
 
         <a href="report_ingreso_mensual.php" class="btn btn-success">Reporte Mensual</a>
         <a href="report_ingreso_anual.php" class="btn btn-info">Reporte Anual</a>

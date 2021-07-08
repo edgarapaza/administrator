@@ -1,7 +1,7 @@
 <?php
-require_once '../../coreapp/Conexion.php';
-$link = new Conexion();
-$conn = $link->Conectar();
+require_once "../../model/Conexion.php";
+
+$conn = new Conexion();
 
 $fec_actual = date("Y-m-d");
 $cod_usu    = $_REQUEST['trab'];
@@ -9,8 +9,8 @@ $mes        = $_REQUEST['mes'];
 $anio       = $_REQUEST['anio'];
 
    $sql = "SELECT COUNT(*) FROM escrituras1 WHERE hra_ing BETWEEN '$anio-$mes-01 00:00:00' AND '$anio-$mes-30 23:59:59' AND cod_usu LIKE '$cod_usu';";
-   $res = $conn->query($sql);
-   $valor = $res->fetch_array();
+   $valor = $conn->ConsultaArray($sql);
+   
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +44,8 @@ $anio       = $_REQUEST['anio'];
             <select name="trab" class="form-control">
               <option value="%">Todos</option>
               <?php
-              $tra =$conn->query("SELECT cod_usu, CONCAT(nom_usu,' ',pat_usu) AS Usuario FROM usuarios WHERE chk_usu <> 0 AND estado_usu = 1;");
+              $sql2 = "SELECT cod_usu, CONCAT(nom_usu,' ',pat_usu) AS Usuario FROM usuarios WHERE chk_usu <> 0 AND estado_usu = 1;";
+              $tra =$conn->ConsultaCon($sql2);
               while ($res_tra = $tra->fetch_array()){
               ?>
               <option value="<?php echo $res_tra[0];?>">
@@ -100,8 +101,9 @@ $anio       = $_REQUEST['anio'];
             echo "Todos los Usuarios";
            }
            else{
-             @$nom = $conn->query("SELECT CONCAT(nom_usu,' ',pat_usu,' ',mat_usu) AS Usuario FROM usuarios WHERE cod_usu = $cod_usu");
-             $Dat = $nom->fetch_array();
+            $sql3 = "SELECT CONCAT(nom_usu,' ',pat_usu,' ',mat_usu) AS Usuario FROM usuarios WHERE cod_usu = $cod_usu;";
+             @$nom = $conn->query($sql3);
+             $Dat = $nom->ConsultaArray();
              echo $Dat[0];
            }
            ?>
@@ -133,12 +135,6 @@ $anio       = $_REQUEST['anio'];
         
     </div>
   </div>
-
-
-
-
-      
-
 
 </body>
 </html>
