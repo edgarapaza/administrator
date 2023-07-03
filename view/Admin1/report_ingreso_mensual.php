@@ -1,4 +1,5 @@
 <?php
+include "../header.php";
 require_once "../../model/Conexion.php";
 
 $conn = new Conexion();
@@ -13,27 +14,15 @@ $anio       = $_REQUEST['anio'];
    
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <title>Busqueda</title>
-</head>
-
-<body>
-
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
+    <div class="grid-x grid-margin-x">
+      <div class="cell medium-12">
         <h3>Reportes Mensual de Ingreso a Base de Datos</h3>
       </div>
     </div>
 
-    <div class="row">
+    <div class="grid-x grid-margin-x">
       <form action="">
-        <div class="col-md-6">
+        <div class="cell small-12 medium-6 large-4">
 
           <p>
           Opciones:
@@ -57,22 +46,24 @@ $anio       = $_REQUEST['anio'];
             </select>
           </p>
 
-          <label for="mes">Mes:</label>
-          <select name="mes" id="mes" class="form-control">
-            <option value="01">Enero</option>
-            <option value="02">Febrero</option>
-            <option value="03">Marzo</option>
-            <option value="04">Abril</option>
-            <option value="05">Mayo</option>
-            <option value="06">Junio</option>
-            <option value="07">Julio</option>
-            <option value="08">Agosto</option>
-            <option value="09">Setiembre</option>
-            <option value="10">Octubre</option>
-            <option value="11">Noviembre</option>
-            <option value="12">Diciembre</option>
-          </select>
-
+          <label for="mes">
+            Mes:
+            <select name="mes" id="mes" class="form-control">
+              <option value="01">Enero</option>
+              <option value="02">Febrero</option>
+              <option value="03">Marzo</option>
+              <option value="04">Abril</option>
+              <option value="05">Mayo</option>
+              <option value="06">Junio</option>
+              <option value="07">Julio</option>
+              <option value="08">Agosto</option>
+              <option value="09">Setiembre</option>
+              <option value="10">Octubre</option>
+              <option value="11">Noviembre</option>
+              <option value="12">Diciembre</option>
+            </select>
+          </label>
+          
           <label>A&ntilde;o</label>
           <select name="anio" id="anio" class="form-control">
             <option value="2010">2010</option>
@@ -90,7 +81,7 @@ $anio       = $_REQUEST['anio'];
             
           </select>
 
-          <button name="buscar2" type="submit" class="btn btn-danger"/>Consultar</button>
+          <button name="buscar2" type="submit" class="button ">Consultar</button>
         </div>
 
         <div class="col-md-6">

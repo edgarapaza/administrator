@@ -1,4 +1,5 @@
 <?php
+include_once "../header.php";
 require_once "../../model/Conexion.php";
 
 $conn = new Conexion();
@@ -34,32 +35,22 @@ if($fec_fin == ""){
   }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
-  <title>Busqueda</title>
-</head>
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
+  
+    <div class="grid-x grid-margin-x grid-padding-y">
+      <div class="cell small-12 medium-12">
         <h2>Reportes Diarios de Ingreso a la Base de Datos</h2>
-
       </div>
     </div>
 
-    <br>
+    
 
-    <div class="row">
+    <div class="grid-x grid-margin-x">
 
-      <div class="col-md-4 bg-info">
-        <p align="left">Opciones:
-          <a href="report_ingreso_print.php?trab=<?php echo $cod_usu;?>&fecha_ini=<?php echo $fec_ini;?>&fecha_fin=<?php echo $fec_fin;?>">Exportar la Lista a Excel</a> |  <a href="index.php">Menu Principal</a></p>
+      <div class="cell medium-4">
+        <p>Opciones:
+          <a class="button success" href="report_ingreso_print.php?trab=<?php echo $cod_usu;?>&fecha_ini=<?php echo $fec_ini;?>&fecha_fin=<?php echo $fec_fin;?>">Exportar la Lista a Excel</a></p>
           <form name="buscar" method="get" action="">
-            <p align="left">Trabajador:
+            <p>Trabajador:
               <select name="trab" class="form-control">
                 <option value="%">Todos</option>
                 <?php
@@ -85,12 +76,11 @@ if($fec_fin == ""){
             
             Finaliza:
             <input type="date" class="form-control" name="fecha_fin" />
-            <input name="buscar2" type="submit" class="btn btn-danger" value="Buscar" />
+            <input name="buscar2" type="submit" class="button large" value="Buscar" />
           </form>
       </div>
 
-
-      <div class="col-md-8">
+      <div class="cell medium-8">
           Total de Filas: <b><?php $n = $query->num_rows; echo $n;?></b><br/>
           Trabajador:
           <?php
@@ -128,10 +118,6 @@ if($fec_fin == ""){
           </table>
       </div>
           
-      </div>
     </div>
 
-    <script src="js/bootstrap.js" type="text/javascript" charset="utf-8" async defer></script>
-    <script src="js/npm.js" type="text/javascript" charset="utf-8" async defer></script>
-</body>
-</html>
+<?php include_once "../footer.php";?>
